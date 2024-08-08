@@ -1,5 +1,5 @@
-import * as Mongoose from "mongoose";
-import mongoose from "mongoose";
+
+import mongoose, {Mongoose} from "mongoose";
 
 
 const MONGODB_URL = process.env.MONGODB_URL!;
@@ -28,9 +28,12 @@ export const connectToDatabase = async () => {
     cached.promise = cached.promise || mongoose.connect(MONGODB_URL, {
         dbName: "BildWerker",
         bufferCommands: false,
-    })
+    }) as Promise<Mongoose> ;
 
-    cached.connection = await cached.promise;
+    if(cached.promise) {
+        cached.connection = await (cached.promise) as Mongoose | null;
+    }
+
 
     return cached.connection;
 
