@@ -12,12 +12,12 @@ export const SideBar = () => {
 
     return (
         <aside
-            className="h-screen p-5 bg-gradient-to-b from-primary to-background shadow-md lg:flex flex-col items-center">
+            className="hidden h-screen w-1/6 p-5 bg-gradient-to-b from-primary to-background shadow-md lg:flex flex-col items-center">
             <div className="flex flex-col gap-6 w-full h-full">
                 {/* Logo or Title */}
                 <div className="flex">
                     <div className="text-3xl font-bold text-white mb-8">
-                        <Link href={"/"}><h2>Bilder<span className="text-accent uppercase underline">Edit</span></h2>
+                        <Link href={"/"}><h3>Bilder<span className="text-accent uppercase underline">Edit</span></h3>
                         </Link>
                     </div>
                 </div>
