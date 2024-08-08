@@ -1,3 +1,5 @@
+import {UserButton} from "@clerk/nextjs";
+
 export default function HomePage() {
   return (
       <div className="min-h-screen bg-background text-foreground">
@@ -14,9 +16,7 @@ export default function HomePage() {
               Experience the power of AI in image generation and editing. Create stunning visuals effortlessly.
             </p>
             <div className="mt-6">
-              <button className="px-4 py-2 bg-accent text-accent-foreground rounded-md">
-                Get Started
-              </button>
+                <UserButton/>
             </div>
           </div>
         </main>
