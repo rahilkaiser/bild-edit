@@ -46,7 +46,7 @@ export const SideBar = () => {
 
 
                     <SignedOut>
-                        <Button asChild>
+                        <Button asChild className="bg-accent text-black hover:bg-accent/80 transition-colors duration-300">
                             <Link href={"/sign-in"}>Login</Link>
                         </Button>
                     </SignedOut>
