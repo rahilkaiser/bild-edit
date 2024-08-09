@@ -4,7 +4,7 @@ import {model, models, Schema} from "mongoose";
 interface IUser {
     clerkId: string;
     email: string;
-    userName: string;
+    username: string;
     photo: string;
     firstName?: string;
     lastName?: string;
@@ -16,7 +16,7 @@ interface IUser {
 const UserSchema = new Schema({
     clerkId: {type: String, required: true, unique: true},
     email: {type: String, required: true, unique: true},
-    userName: {type: String, required: true , unique: true},
+    username: {type: String, required: true , unique: true},
     photo: {type: String, required: true},
     firstName: {type: String},
     lastName: {type: String},
