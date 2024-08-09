@@ -16,8 +16,8 @@ import {
 } from "@/components/ui/select"
 import {aspectRatioOptions, transformationTypes} from "@/constants";
 import {useState, useTransition} from "react";
-import {TransformationFormProps, Transformations} from "@/types/image";
-import {AspectRatioKey, debounce, deepMergeObjects} from "@/lib/utils";
+import {TransformationConfig, TransformationFormProps} from "@/types/image";
+import {AspectRatioKey, deepMergeObjects} from "@/lib/utils";
 
 
 export const formSchema = z.object({
@@ -48,14 +48,12 @@ export const TransformationForm = (
 
 
     const [image, setImage] = useState(data);
-    const [newTransformation, setNewTransformation] = useState<Transformations | null>(null);
+    const [newTransformation, setNewTransformation] = useState<TransformationConfig | null>(null);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [isTransforming, setIsTransforming] = useState<boolean>(false);
     const [transformationConfig, setTransformationConfig] = useState<any>(config);
     const [isPending, startTransition] = useTransition();
-
     const transformation = transformationTypes[type];
-
     const initalValues = data && action === 'Update' ? {
         title: data?.title,
         aspectRatio: data?.aspectRatio,
@@ -63,8 +61,6 @@ export const TransformationForm = (
         prompt: data?.prompt,
         publicId: data?.publicId,
     } : defaultValues;
-
-
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: initalValues,
@@ -82,25 +78,19 @@ export const TransformationForm = (
             width: imageSize.width,
             height: imageSize.height,
         }))
-
         setNewTransformation(transformation.config)
-
         return onChange(value)
     }
 
     function onInputChangeHandler(fieldName: string, value: string, type: string, onChange: (value: string) => void) {
-        debounce(() => {
-            setNewTransformation((prevState: any) => ({
-                ...prevState,
+        setNewTransformation((prevState: any) => ({
+                ...prevState ,
                 [type]: {
-                    ...prevState[type],
+                    ...prevState?.[type],
                     [(fieldName === 'prompt') ? 'prompt' : 'to']: value
                 },
             }))
-
-
-            return onChange(value)
-        }, 1000)
+        return onChange(value)
     }
 
     // TODO: Return to update Credits
@@ -158,7 +148,6 @@ export const TransformationForm = (
                     />
                 )}
                 {(type === 'remove' || type === 'recolor') &&
-
                     <div className="">
                         <CustomField
                             control={form.control}

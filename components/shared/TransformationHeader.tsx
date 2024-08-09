@@ -1,4 +1,4 @@
-export const TransformationHeader = ({title, description, type}: { title: string, description: string }) => {
+export const TransformationHeader = ({title, description}: { title: string, description: string }) => {
 
 
     return (

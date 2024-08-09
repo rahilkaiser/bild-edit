@@ -15,7 +15,7 @@ import {IImage} from "@/lib/database/models/image.model";
  * @property {boolean} [recolor.multiple] - Flag indicating if multiple colors should be used.
  * @property {boolean} [removeBackground] - Flag indicating if the background should be removed.
  */
-declare type Transformations = {
+declare type TransformationConfig = {
     restore?: boolean;
     fillBackground?: boolean;
     remove?: {
@@ -29,6 +29,14 @@ declare type Transformations = {
         multiple?: boolean;
     };
     removeBackground?: boolean;
+};
+
+declare type TransformationType = {
+    type: TransformationTypeKey;
+    title: string;
+    subTitle: string;
+    config: TransformationConfig;
+    icon: any;
 };
 
 /**
@@ -50,7 +58,7 @@ declare type TransformationTypeKey =
  * @property {TransformationTypeKey} type - The type of transformation being configured.
  * @property {number} creditBalance - The user's current credit balance.
  * @property {IImage | null} [data] - Optional data about the image being transformed.
- * @property {Transformations | null} [config] - Optional configuration settings for the transformation.
+ * @property {TransformationConfig | null} [config] - Optional configuration settings for the transformation.
  */
 declare type TransformationFormProps = {
     action: "Add" | "Update";
@@ -58,5 +66,5 @@ declare type TransformationFormProps = {
     type: TransformationTypeKey;
     creditBalance: number;
     data?: IImage | null;
-    config?: Transformations | null;
+    config?: TransformationConfig | null;
 };
