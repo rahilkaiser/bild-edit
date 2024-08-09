@@ -3,16 +3,11 @@ import {MobileNav} from "@/components/shared/MobileNav";
 
 export default function Layout({children}: { children: React.ReactNode }) {
     return (
-        <main className="root">
+        <main className="flex lg:flex-row flex-col">
             <SideBar/>
             <MobileNav/>
 
-
-            {/*<div className="container mx-auto">*/}
-            {/*    <div className="wrapper">*/}
-            {/*        {children}*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+            <div className="container mx-auto py-4">{children}</div>
         </main>
     );
 };

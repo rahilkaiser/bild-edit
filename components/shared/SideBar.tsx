@@ -12,7 +12,7 @@ export const SideBar = () => {
 
     return (
         <aside
-            className="hidden h-screen w-1/6 p-5 bg-gradient-to-b from-primary to-background shadow-md lg:flex flex-col items-center">
+            className="hidden h-screen min-w-1/6 p-5 bg-gradient-to-b from-primary to-background shadow-md lg:flex flex-col items-center">
             <div className="flex flex-col gap-6 w-full h-full">
                 {/* Logo or Title */}
                 <div className="flex">
