@@ -3,10 +3,9 @@ import Link from "next/link";
 import {SignedIn, SignedOut, UserButton} from "@clerk/nextjs";
 import {dark} from "@clerk/themes";
 import {
-    Sheet, SheetClose,
+    Sheet,
     SheetContent,
     SheetDescription,
-    SheetFooter,
     SheetHeader,
     SheetTitle,
     SheetTrigger
@@ -22,6 +21,15 @@ export const MobileNav = () => {
     return (
         <header className="lg:hidden">
             <nav className="flex gap-2 justify-between p-4 items-center">
+                <SignedIn><UserButton appearance={{
+                    baseTheme: dark,
+                    variables: {
+                        fontSize: "1.1rem",
+                    },
+                    elements: {
+                        userButtonAvatarBox: "w-12 h-12",
+                    }
+                }}/></SignedIn>
                 <div className="flex">
                     <div className="text-3xl font-bold text-white ">
                         <Link href={"/"}><h3>Bilder<span className="text-accent uppercase">Edit</span></h3>
@@ -29,7 +37,7 @@ export const MobileNav = () => {
                     </div>
                 </div>
                 <SignedIn>
-                    <Sheet >
+                    <Sheet>
                         <SheetTrigger asChild>
                             <Button variant="ghost" className="hover:text-accent hover:bg-transparent">
                                 <MenuIcon/>
@@ -66,19 +74,6 @@ export const MobileNav = () => {
                                 })}
                             </ul>
 
-
-                            <SheetFooter className="flex justify-end items-end p-12">
-
-                                <UserButton showName appearance={{
-                                    baseTheme: dark,
-                                    variables: {
-                                        fontSize: "1.1rem",
-                                    },
-                                    elements: {
-                                        userButtonAvatarBox: "w-12 h-12"
-                                    }
-                                }}/>
-                            </SheetFooter>
                         </SheetContent>
                     </Sheet>
                 </SignedIn>

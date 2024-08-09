@@ -1,6 +1,6 @@
 import {headers} from "next/headers";
 import {Webhook} from "svix";
-import {WebhookEvent, UserJSON} from "@clerk/backend";
+import {WebhookEvent} from "@clerk/backend";
 import {createUser, deleteUser, updateUser} from "@/lib/actions/user.actions";
 import {clerkClient} from "@clerk/nextjs/server";
 import {NextResponse} from "next/server";
@@ -72,7 +72,8 @@ function verifyWebhook(body: string, headers: { svixId: string, svixTimestamp: s
  * @returns A JSON response indicating the user was successfully created.
  */
 async function handleUserCreated(event: WebhookEvent) {
-    const {id, email_addresses, image_url, first_name, last_name, username} = event.data as UserJSON;
+    const {id, email_addresses, image_url, first_name, last_name, username} = event.data as any ;
+    console.log("User created", event.data);
 
     const user: CreateUserParams = {
         clerkId: id,
@@ -102,7 +103,7 @@ async function handleUserCreated(event: WebhookEvent) {
  * @returns A JSON response indicating the user was successfully updated.
  */
 async function handleUserUpdated(event: WebhookEvent) {
-    const {id, image_url, first_name, last_name, username} = event.data as UserJSON;
+    const {id, image_url, first_name, last_name, username} = event.data as any;
 
     const user:UpdateUserParams = {
         firstName: first_name,
@@ -138,6 +139,7 @@ export async function POST(req: Request) {
         const svixHeaders = getSvixHeaders();
         const payload = await req.json();
         const body = JSON.stringify(payload);
+        console.log("Received webhook:", body);
         const event = verifyWebhook(body, svixHeaders);
 
         const eventTypeHandlers: { [key: string]: (event: WebhookEvent) => Promise<Response> } = {
