@@ -19,6 +19,7 @@ import {useState, useTransition} from "react";
 import {TransformationConfig, TransformationFormProps} from "@/types/image";
 import {AspectRatioKey, deepMergeObjects} from "@/lib/utils";
 import {MediaUploader} from "@/components/shared/MediaUploader";
+import {TransformedImage} from "@/components/shared/TransformedImage";
 
 
 export const formSchema = z.object({
@@ -181,8 +182,9 @@ export const TransformationForm = (
 
                 }
 
-                <div>
+                <div className="flex lg:flex-row lg:justify-between lg:space-x-16 lg:items-stretch flex-col space-y-8 min-h-[250px] lg:space-y-0">
                     <CustomField
+                        className="flex-grow h-full min-h-[250px] w-full"
                         control={form.control}
                         name="publicId"
                         render={({field}) => (
@@ -195,8 +197,19 @@ export const TransformationForm = (
                             />
                         )}
                     />
+
+                    <div className="flex-grow w-full">
+                        <TransformedImage
+                            image={image}
+                            type={type}
+                            title={form.getValues().title}
+                            isTransforming={isTransforming}
+                            setIsTransforming={setIsTransforming}
+                            transformationConfig={transformationConfig}
+                        />
+                    </div>
                 </div>
-                <div className="flex flex-col w-fit gap-4">
+                <div className="flex flex-col w-fit gap-4 items-start">
                     <Button
                         type="button"
                         className="uppercase"

@@ -7,7 +7,7 @@ export default function Layout({children}: { children: React.ReactNode }) {
             <SideBar/>
             <MobileNav/>
 
-            <div className="container mx-auto py-4">{children}</div>
+            <div className="lg:ml-64 overflow-y-auto flex-1 container mx-auto py-4">{children}</div>
         </main>
 
     );

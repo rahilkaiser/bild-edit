@@ -1,6 +1,5 @@
 import {TransformationTypeKey} from "@/types/image";
 
-
 /**
  * Properties representing search parameters and transformation types.
  *

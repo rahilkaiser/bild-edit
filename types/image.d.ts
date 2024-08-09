@@ -69,3 +69,23 @@ declare type TransformationFormProps = {
     config?: TransformationConfig | null;
 };
 
+/**
+ * Properties representing the state and configuration of a transformed image.
+ *
+ * @property {any} image - The image data object.
+ * @property {string} type - The type of transformation applied to the image.
+ * @property {string} title - The title of the image.
+ * @property {TransformationConfig | null} transformationConfig - The configuration settings for the transformation.
+ * @property {boolean} isTransforming - Flag indicating if the image is currently being transformed.
+ * @property {boolean} [hasDownload] - Optional flag indicating if the image has a downloadable version.
+ * @property {React.Dispatch<React.SetStateAction<boolean>>} [setIsTransforming] - Optional state setter for controlling the transformation state.
+ */
+declare type TransformedImageProps = {
+    image: any;
+    type: string;
+    title: string;
+    transformationConfig: TransformationConfig | null | undefined;
+    isTransforming: boolean;
+    hasDownload?: boolean;
+    setIsTransforming?: React.Dispatch<React.SetStateAction<boolean>>;
+};
