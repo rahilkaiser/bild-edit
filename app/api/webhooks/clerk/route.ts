@@ -1,6 +1,6 @@
 import {headers} from "next/headers";
 import {Webhook} from "svix";
-import {WebhookEvent} from "@clerk/backend";
+import {WebhookEvent, UserJSON} from "@clerk/backend";
 import {createUser, deleteUser, updateUser} from "@/lib/actions/user.actions";
 import {clerkClient} from "@clerk/nextjs/server";
 import {NextResponse} from "next/server";
@@ -72,7 +72,7 @@ function verifyWebhook(body: string, headers: { svixId: string, svixTimestamp: s
  * @returns A JSON response indicating the user was successfully created.
  */
 async function handleUserCreated(event: WebhookEvent) {
-    const {id, email_addresses, image_url, first_name, last_name, username} = event.data;
+    const {id, email_addresses, image_url, first_name, last_name, username} = event.data as UserJSON;
 
     const user: CreateUserParams = {
         clerkId: id,
@@ -102,14 +102,14 @@ async function handleUserCreated(event: WebhookEvent) {
  * @returns A JSON response indicating the user was successfully updated.
  */
 async function handleUserUpdated(event: WebhookEvent) {
-    const {id, image_url, first_name, last_name, username} = event.data;
+    const {id, image_url, first_name, last_name, username} = event.data as UserJSON;
 
-    const user = {
+    const user:UpdateUserParams = {
         firstName: first_name,
         lastName: last_name,
         username: username!,
         photo: image_url,
-    };
+    } as UpdateUserParams;
 
     const updatedUser = await updateUser(id!, user);
     return NextResponse.json({message: "User updated", user: updatedUser});
