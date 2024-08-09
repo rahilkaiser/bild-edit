@@ -9,5 +9,6 @@ export default function Layout({children}: { children: React.ReactNode }) {
 
             <div className="container mx-auto py-4">{children}</div>
         </main>
+
     );
 };

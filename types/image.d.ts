@@ -68,3 +68,4 @@ declare type TransformationFormProps = {
     data?: IImage | null;
     config?: TransformationConfig | null;
 };
+

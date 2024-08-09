@@ -18,6 +18,7 @@ import {aspectRatioOptions, transformationTypes} from "@/constants";
 import {useState, useTransition} from "react";
 import {TransformationConfig, TransformationFormProps} from "@/types/image";
 import {AspectRatioKey, deepMergeObjects} from "@/lib/utils";
+import {MediaUploader} from "@/components/shared/MediaUploader";
 
 
 export const formSchema = z.object({
@@ -179,6 +180,22 @@ export const TransformationForm = (
                     </div>
 
                 }
+
+                <div>
+                    <CustomField
+                        control={form.control}
+                        name="publicId"
+                        render={({field}) => (
+                            <MediaUploader
+                                onValueChange={field.onChange}
+                                setImage={setImage}
+                                publicId={field.value}
+                                image={image}
+                                type={type}
+                            />
+                        )}
+                    />
+                </div>
                 <div className="flex flex-col w-fit gap-4">
                     <Button
                         type="button"
