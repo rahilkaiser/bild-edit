@@ -34,7 +34,7 @@ export const MediaUploader = (
                 publicId: result?.info?.public_id,
                 width: result?.info?.width,
                 height: result?.info?.height,
-                secureUrl: result?.info?.secure_url
+                secureURL: result?.info?.secure_url
             }
         });
 
@@ -92,7 +92,7 @@ export const MediaUploader = (
                             }
                         }>
                             <div
-                                className="h-[250px] border-dashed border-2 rounded-xl cursor-pointer border-primary flex justify-center items-center flex-col gap-4">
+                                className="p-12 border-dashed border-2 rounded-xl cursor-pointer border-primary flex justify-center items-center flex-col gap-4">
                                 <UploadCloud className="w-10 h-10 text-accent"/>
                                 <p>Click here to upload Image</p>
                             </div>

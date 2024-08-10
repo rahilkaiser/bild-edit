@@ -1,12 +1,13 @@
 "use server";
 
-import {AddImageParams, UpdateImageParams} from "@/types/transaction";
 import {handleError} from "@/lib/utils";
 import {connectToDatabase} from "@/lib/database/mongoose";
 import {revalidatePath} from "next/cache";
 import User from "@/lib/database/models/user.model";
 import Image from "@/lib/database/models/image.model"
 import {redirect} from "next/navigation";
+import {AddImageParams, UpdateImageParams} from "@/types/image";
+
 
 export async function addImage({image, userId, path}: AddImageParams) {
     try {

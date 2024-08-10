@@ -89,3 +89,41 @@ declare type TransformedImageProps = {
     hasDownload?: boolean;
     setIsTransforming?: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
+declare type AddImageParams = {
+    image: {
+        title: string;
+        publicId: string | undefined;
+        transformationType: string;
+        width: number| undefined;
+        height: number | undefined;
+        config: any;
+        secureURL: URL | undefined;
+        transformationURL: string;
+        aspectRatio: string | undefined;
+        prompt: string | undefined;
+        color: string | undefined;
+    };
+    userId: string;
+    path: string;
+};
+
+declare type UpdateImageParams = {
+    image: {
+        _id: string;
+        title: string;
+        publicId: string | undefined;
+        transformationType: string;
+        width: number| undefined;
+        height: number | undefined;
+        config: any;
+        secureURL: URL | undefined;
+        transformationURL: string;
+        aspectRatio: string | undefined;
+        prompt: string | undefined;
+        color: string | undefined;
+    };
+    userId: string;
+    path: string;
+};
+

@@ -1,6 +1,8 @@
 import {type ClassValue, clsx} from "clsx";
 import {twMerge} from "tailwind-merge";
 import {aspectRatioOptions} from "@/constants";
+import {TransformationConfig} from "@/types/image";
+import { ZodNullDef } from "zod";
 
 
 /**
@@ -35,7 +37,7 @@ export const handleError = (error: unknown) => {
 
 export type AspectRatioKey = keyof typeof aspectRatioOptions;
 
-export const deepMergeObjects = (obj1: any, obj2: any) => {
+export const deepMergeObjects = (obj1: TransformationConfig | ZodNullDef | any, obj2: TransformationConfig| null | any):TransformationConfig => {
     if (obj2 === null || obj2 === undefined) {
         return obj1;
     }

@@ -13,8 +13,56 @@
               <chat>
                 <internalId value="48affc0d-dcb6-42ce-b2ad-7f0fd3fc6c7c" />
               </chat>
+              <chat>
+                <internalId value="fdc40ed3-c5fe-42f5-8b05-ee76cbcdc5be" />
+              </chat>
+              <chat>
+                <internalId value="a6f2a973-98bf-4c98-ada7-203b1c9adb4d" />
+              </chat>
+              <chat>
+                <internalId value="12cb7a1e-fae7-48ae-a534-ba423ad1f420" />
+              </chat>
+              <chat>
+                <internalId value="3483e049-7347-45a8-b8a7-44f27c9f20b9" />
+              </chat>
+              <chat>
+                <internalId value="5c981f38-9c60-425a-a5c4-972bf2f8a65a" />
+              </chat>
+              <chat>
+                <internalId value="bd428604-e05c-4681-a443-0e06b02e4ec3" />
+              </chat>
+              <chat>
+                <internalId value="fedd7629-5f77-4d70-999a-6f1604ad2555" />
+              </chat>
+              <chat>
+                <internalId value="f6dbf511-baab-4c71-824b-77853b595b54" />
+              </chat>
+              <chat>
+                <internalId value="3b9f6e6f-0e7a-4c68-a368-ee4619385dfb" />
+              </chat>
             </list>
           </chats>
+          <defaultLlm>
+            <llm>
+              <model value="anthropic/claude-3-5-sonnet-20240620" />
+              <provider value="Anthropic" />
+              <tags>
+                <list>
+                  <option value="gateway" />
+                  <option value="accuracy" />
+                  <option value="recommended" />
+                  <option value="free" />
+                </list>
+              </tags>
+              <title value="Claude 3.5 Sonnet" />
+              <usage>
+                <list>
+                  <option value="chat" />
+                  <option value="edit" />
+                </list>
+              </usage>
+            </llm>
+          </defaultLlm>
         </AccountData>
       </list>
     </accountData>
