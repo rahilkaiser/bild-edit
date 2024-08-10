@@ -98,7 +98,7 @@ declare type AddImageParams = {
         width: number| undefined;
         height: number | undefined;
         config: any;
-        secureURL: URL | undefined;
+        secureURL: string | undefined;
         transformationURL: string;
         aspectRatio: string | undefined;
         prompt: string | undefined;
@@ -117,7 +117,7 @@ declare type UpdateImageParams = {
         width: number| undefined;
         height: number | undefined;
         config: any;
-        secureURL: URL | undefined;
+        secureURL: string | undefined;
         transformationURL: string;
         aspectRatio: string | undefined;
         prompt: string | undefined;

@@ -22,7 +22,7 @@ export default async function AddTransformationsTypePage({params: {type}} : Sear
                 description={transformationType.subTitle}
             />
 
-            <section className="mt-10">
+            <section className="mt-10 px-10">
                 <TransformationForm
                     action="Add"
                     type={transformationType.type}

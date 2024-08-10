@@ -14,8 +14,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { aspectRatioOptions, transformationTypes } from "@/constants";
-import { useState, useTransition } from "react";
+import { aspectRatioOptions, creditFee, transformationTypes } from "@/constants";
+import { useEffect, useState, useTransition } from "react";
 import { TransformationConfig, TransformationFormProps } from "@/types/image";
 import { AspectRatioKey, deepMergeObjects } from "@/lib/utils";
 import { MediaUploader } from "@/components/shared/MediaUploader";
@@ -24,6 +24,8 @@ import { updateCredits } from "@/lib/actions/user.actions";
 import { getCldImageUrl } from "next-cloudinary";
 import { addImage, updateImage } from "@/lib/actions/image.action";
 import { useRouter } from "next/navigation";
+import InsufficientCreditsModal from "./InsufficientCreditsModal";
+import config from './../../tailwind.config';
 
 export const formSchema = z.object({
   title: z.string().min(1),
@@ -187,13 +189,21 @@ export const TransformationForm = ({
 
     setNewTransformation(null);
     startTransition(async () => {
-      await updateCredits(userId, -1);
+      await updateCredits(userId, creditFee);
     });
   }
+
+  useEffect(() => {
+
+    if(image && (type === 'restore' || type === 'removeBackground')) {
+      setNewTransformation(transformation.config);
+    }
+  }, [image,transformation.config, type]);
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      {creditBalance < Math.abs(creditFee) && <InsufficientCreditsModal />}
         <CustomField
           name="title"
           formLabel="Image Title"
@@ -201,7 +211,7 @@ export const TransformationForm = ({
           render={({ field }) => (
             <Input
               {...field}
-              className="bg-primary/40 focus-visible:ring-accent transition-shadow duration-300"
+              className="bg-primary/40 focus-visible:ring-accent transition-shadow duration-300 px-10"
             />
           )}
         />

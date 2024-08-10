@@ -1,5 +1,5 @@
 export default function UpdateTransformationsPage() {
     return (
-        <div>UpdateTransformationsPage</div>
+        <div className="px-10">UpdateTransformationsPage</div>
     );
 }
