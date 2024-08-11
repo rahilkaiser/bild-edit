@@ -28,7 +28,7 @@ export default async function CreditsPage() {
             <section className="border-t border-accent mt-8">
                 <div className="grid xl:grid-cols-3 gap-8 mt-8 place-content-center">
                     {plans.map((plan) => (
-                        <Card className="w-fit min-w-full flex flex-col justify-between">
+                        <Card key={plan._id} className="w-fit min-w-full flex flex-col justify-between">
                             <CardHeader>
                                 <CardTitle className="flex justify-between">
                                     <span className="pr-10 text-accent text-wrap">{plan.name}</span>

@@ -53,8 +53,8 @@ export default async function ProfilePage({searchParams}: SearchParamProps) {
 
             <section>
                 <ImageListView
-                    images={images.data}
-                    totalPages={images.totalPages}
+                    images={images?.data}
+                    totalPages={images?.totalPages || 0}
                     page={page}
                 />
             </section>

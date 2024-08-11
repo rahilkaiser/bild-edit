@@ -31,7 +31,7 @@ export default async function HomePage({searchParams}: SearchParamProps) {
         </div>
 
         <section className="mt-8">
-          <ImageListView images={images.data} totalPages={images.totalPage} page={page} />
+          <ImageListView images={images?.data} totalPages={images?.totalPage || 0} page={page} />
         </section>
       </main>
 

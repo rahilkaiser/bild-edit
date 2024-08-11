@@ -1,14 +1,6 @@
+"use client"
+import {Camera, Crown, Filter, Home, ImageIcon, PackageIcon, Scan, ShoppingBag, Stars, User} from "lucide-react";
 
-import {
-    Home,
-    Image as ImageIcon,
-    Stars,
-    Scan,
-    Filter,
-    Camera,
-    User,
-    ShoppingBag, Package, Crown,
-} from "lucide-react";
 export const navLinks = [
     {
         label: "Home",
@@ -56,7 +48,7 @@ export const plans = [
     {
         _id: 1,
         name: "Free",
-        icon: Package,
+        icon: PackageIcon,
         price: 0,
         credits: 20,
         inclusions: [
@@ -81,7 +73,7 @@ export const plans = [
     {
         _id: 2,
         name: "Pro Package",
-        icon: Package,
+        icon: PackageIcon,
         price: 40,
         credits: 120,
         inclusions: [
