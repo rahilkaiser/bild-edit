@@ -11,7 +11,7 @@ export function ImageCard({image}: { image: IImage }) {
                 <Card className="w-full ">
                     <CardHeader>
                         <CardTitle>{image.title}</CardTitle>
-                        <CardDescription>{image.transformationType}</CardDescription>
+                        <CardDescription className="text-accent font-semibold">{image.transformationType}</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <CldImage

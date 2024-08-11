@@ -17,7 +17,7 @@ export const SideBar = () => {
                 {/* Logo or Title */}
                 <div className="flex">
                     <div className="text-3xl font-bold text-white mb-8">
-                        <Link href={"/"}><h3>Bilder<span className="text-accent uppercase underline">Edit</span></h3>
+                        <Link href={"/"}><h3>Quick<span className="text-accent uppercase underline">Edit</span></h3>
                         </Link>
                     </div>
                 </div>

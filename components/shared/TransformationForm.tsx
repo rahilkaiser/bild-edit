@@ -17,7 +17,7 @@ import {
 import {aspectRatioOptions, creditFee, transformationTypes} from "@/constants";
 import {useEffect, useState, useTransition} from "react";
 import {TransformationConfig, TransformationFormProps} from "@/types/image";
-import {AspectRatioKey, deepMergeObjects} from "@/lib/utils";
+import {AspectRatioKey, deepMergeObjects, formUrlQuery} from "@/lib/utils";
 import {MediaUploader} from "@/components/shared/MediaUploader";
 import {TransformedImage} from "@/components/shared/TransformedImage";
 import {updateCredits} from "@/lib/actions/user.actions";
@@ -166,13 +166,17 @@ export const TransformationForm = (
         type: string,
         onChange: (value: string) => void
     ) {
-        setNewTransformation((prevState: any) => ({
-            ...prevState,
-            [type]: {
-                ...prevState?.[type],
-                [fieldName === "prompt" ? "prompt" : "to"]: value,
-            },
-        }));
+
+        setTimeout(() => {
+            setNewTransformation((prevState: any) => ({
+                ...prevState,
+                [type]: {
+                    ...prevState?.[type],
+                    [fieldName === "prompt" ? "prompt" : "to"]: value,
+                },
+            }));
+        }, 1000);
+
         return onChange(value);
     }
 
