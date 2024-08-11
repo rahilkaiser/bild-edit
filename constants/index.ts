@@ -1,3 +1,4 @@
+
 import {
     Home,
     Image as ImageIcon,
@@ -6,9 +7,7 @@ import {
     Filter,
     Camera,
     User,
-    ShoppingBag,
-    Package,
-    Crown,
+    ShoppingBag, Package, Crown,
 } from "lucide-react";
 export const navLinks = [
     {
