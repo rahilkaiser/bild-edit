@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { aspectRatioOptions } from "@/constants";
 import { TransformationConfig } from "@/types/image";
 import { ZodNullDef } from "zod";
+import qs from "qs";
 
 
 /**
@@ -126,3 +127,11 @@ export function debounce(callback: () => void, delay: number | undefined) {
         timeoutId = setTimeout(callback, delay);
     }
 }
+
+  export function formUrlQuery(searchParams: string, key: string, val: string | number) {
+    const params = { ...qs.parse(searchParams.toString()), [key]: val };
+
+    return `${window.location.pathname}?${qs.stringify(params, {
+      skipNulls: true,
+    })}`;
+  }

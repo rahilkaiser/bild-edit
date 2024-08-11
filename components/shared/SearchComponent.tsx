@@ -4,19 +4,12 @@ import React, { useEffect, useState } from "react";
 import { Input } from "../ui/input";
 import { useRouter, useSearchParams } from "next/navigation";
 import qs from "qs";
+import {formUrlQuery} from "@/lib/utils";
 
 const SearchComponent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState<string>("");
-
-  function formUrlQuery(searchParams: string, key: string, val: string) {
-    const params = { ...qs.parse(searchParams.toString()), [key]: val };
-
-    return `${window.location.pathname}?${qs.stringify(params, {
-      skipNulls: true,
-    })}`;
-  }
 
   function removeKeysFromQuery(searchParams: string, keysToRemove: string[]) {
     const currentUrl = qs.parse(searchParams);

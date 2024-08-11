@@ -1,9 +1,16 @@
+import ImageListView from "@/components/shared/ImageListView";
 import SearchComponent from "@/components/shared/SearchComponent";
-import { Input } from "@/components/ui/input";
-import { UserButton } from "@clerk/nextjs";
-import { SearchCheckIcon, SearchIcon } from "lucide-react";
+import { SearchParamProps } from "@/types";
+import {getAllImages} from "@/lib/actions/image.action";
 
-export default function HomePage() {
+
+
+export default async function HomePage({searchParams}: SearchParamProps) {
+  const page = Number(searchParams?.page) || 1;
+  const searchQuery = (searchParams?.query as string) || '';
+
+  const images = await getAllImages({ page, searchQuery})
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
@@ -22,12 +29,16 @@ export default function HomePage() {
         <div className="bg-card text-card-foreground p-4 rounded-md shadow-lg">
           <SearchComponent />
         </div>
+
+        <section className="mt-8">
+          <ImageListView images={images.data} totalPages={images.totalPage} page={page} />
+        </section>
       </main>
 
       {/* Footer */}
-      <footer className="p-4 bg-secondary text-secondary-foreground mt-auto">
-        <p>&copy; 2024 AI Image Editor. All rights reserved.</p>
-      </footer>
+      {/*<footer className="p-4 bg-secondary text-secondary-foreground mt-auto">*/}
+      {/*  <p>&copy; 2024 AI Image Editor. All rights reserved.</p>*/}
+      {/*</footer>*/}
     </div>
   );
 }
