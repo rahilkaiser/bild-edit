@@ -35,10 +35,10 @@ export default async function HomePage({searchParams}: SearchParamProps) {
         </section>
       </main>
 
-      {/* Footer */}
-      {/*<footer className="p-4 bg-secondary text-secondary-foreground mt-auto">*/}
-      {/*  <p>&copy; 2024 AI Image Editor. All rights reserved.</p>*/}
-      {/*</footer>*/}
+
+      <footer className="p-4 bg-secondary text-secondary-foreground mt-auto">
+        <p>&copy; 2024 AI Image Editor. All rights reserved.</p>
+      </footer>
     </div>
   );
 }

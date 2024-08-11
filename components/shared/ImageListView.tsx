@@ -50,7 +50,7 @@ const ImageListView = (
                 </div>
             )}
 
-            {totalPages > 0 && (
+            {totalPages > 1 && (
                 <Pagination className="my-10 order-1 lg:order-4">
                     <PaginationContent className="flex w-full">
                         <Button

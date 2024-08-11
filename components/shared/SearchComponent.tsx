@@ -44,9 +44,10 @@ const SearchComponent = () => {
   }, [query, router, searchParams]);
 
   return (
-    <div className="flex  items-center gap-2 m-6">
+    <div className="flex items-center gap-2 m-6">
       <SearchIcon className="w-6 h-6" />
       <Input
+          placeholder="Search by title or describe the image"
         className="bg-primary/40 focus-visible:ring-accent transition-shadow duration-300 px-10"
         onChange={(e) => setQuery(e.target.value)}
       />

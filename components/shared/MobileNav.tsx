@@ -3,7 +3,7 @@ import Link from "next/link";
 import {SignedIn, SignedOut, UserButton} from "@clerk/nextjs";
 import {dark} from "@clerk/themes";
 import {
-    Sheet,
+    Sheet, SheetClose,
     SheetContent,
     SheetDescription,
     SheetHeader,
@@ -19,8 +19,8 @@ export const MobileNav = () => {
     const pathname = usePathname()
 
     return (
-        <header className="lg:hidden">
-            <nav className="flex gap-2 justify-between p-4 items-center">
+        <header className="lg:hidden sticky top-0 bg-background z-40 backdrop-blur">
+            <nav className="flex gap-2 justify-between p-4 items-center opacity-100">
                 <SignedIn><UserButton appearance={{
                     baseTheme: dark,
                     variables: {
@@ -30,7 +30,7 @@ export const MobileNav = () => {
                         userButtonAvatarBox: "w-12 h-12",
                     }
                 }}/></SignedIn>
-                <div className="flex">
+                <div className="flex ">
                     <div className="text-3xl font-bold text-white ">
                         <Link href={"/"}><h3>Bilder<span className="text-accent uppercase">Edit</span></h3>
                         </Link>
@@ -65,10 +65,13 @@ export const MobileNav = () => {
                                     return (
                                         <li key={i}
                                             className={`flex items-center gap-3 ${isActive ? "text-accent" : "text-white"} text-sm hover:text-accent transition-colors duration-300 cursor-pointer`}>
-                                            <Link className="flex gap-2" href={link.route}>
-                                                <link.icon className="w-4 h-4"/>
-                                                {link.label}
-                                            </Link>
+                                            <SheetClose asChild>
+
+                                                <Link className="flex gap-2" href={link.route}>
+                                                    <link.icon className="w-4 h-4"/>
+                                                    {link.label}
+                                                </Link>
+                                            </SheetClose>
                                         </li>
                                     )
                                 })}
