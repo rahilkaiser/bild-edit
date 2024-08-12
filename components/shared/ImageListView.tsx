@@ -1,7 +1,7 @@
 "use client"
 import {IImage} from "@/lib/database/models/image.model";
 import React from "react";
-import {useRouter, useSearchParams} from "next/navigation";
+import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {formUrlQuery} from "@/lib/utils";
 import {ImageCard} from "@/components/shared/ImageCard";
 
@@ -20,6 +20,8 @@ const ImageListView = (
     }) => {
 
     const router = useRouter();
+    const pathName = usePathname();
+
     const searchParams = useSearchParams();
 
     const onPageChange = (action: string) => {
@@ -32,7 +34,7 @@ const ImageListView = (
     return (
         <div className="flex flex-col">
             <div className="order-2 py-8">
-                <h3>Recent Edits</h3>
+                <h3>{ pathName === "/profile" ? "My Recent Edits" : "Showcase"}</h3>
             </div>
             {images.length > 0 ? (
                 <div className="order-3 columns-1 lg:columns-3 xl:columns-4 gap-3 w-full space-y-3 pb-28 ">

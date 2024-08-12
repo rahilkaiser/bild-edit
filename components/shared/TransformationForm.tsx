@@ -14,7 +14,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import {aspectRatioOptions, creditFee, transformationTypes} from "@/constants";
+import {aspectRatioOptions, creditFee} from "@/constants";
 import {useEffect, useState, useTransition} from "react";
 import {TransformationConfig, TransformationFormProps} from "@/types/image";
 import {AspectRatioKey, deepMergeObjects, formUrlQuery} from "@/lib/utils";
@@ -26,6 +26,49 @@ import {addImage, updateImage} from "@/lib/actions/image.action";
 import {useRouter} from "next/navigation";
 import InsufficientCreditsModal from "./InsufficientCreditsModal";
 import config from './../../tailwind.config';
+import {Camera, Filter, ImageIcon, Scan, Stars} from "lucide-react";
+
+const transformationTypes = {
+    restore: {
+        type: "restore",
+        title: "Restore Image",
+        subTitle: "Refine images by removing noise and imperfections",
+        config: { restore: true },
+        icon: ImageIcon,
+    },
+    removeBackground: {
+        type: "removeBackground",
+        title: "Background Remove",
+        subTitle: "Removes the background of the image using AI",
+        config: { removeBackground: true },
+        icon: Camera,
+    },
+    fill: {
+        type: "fill",
+        title: "Generative Fill",
+        subTitle: "Enhance an image's dimensions using AI outpainting",
+        config: { fillBackground: true },
+        icon: Stars,
+    },
+    remove: {
+        type: "remove",
+        title: "Object Remove",
+        subTitle: "Identify and eliminate objects from images",
+        config: {
+            remove: { prompt: "", removeShadow: true, multiple: true },
+        },
+        icon: Scan,
+    },
+    recolor: {
+        type: "recolor",
+        title: "Object Recolor",
+        subTitle: "Identify and recolor objects from the image",
+        config: {
+            recolor: { prompt: "", to: "", multiple: true },
+        },
+        icon: Filter,
+    },
+};
 
 export const formSchema = z.object({
     title: z.string().min(1),

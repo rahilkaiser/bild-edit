@@ -1,15 +1,92 @@
 import {redirect} from "next/navigation";
 import {getUserById} from "@/lib/actions/user.actions";
-import {plans} from "@/constants";
 import {TransformationHeader} from "@/components/shared/TransformationHeader";
 import Image from "next/image";
 import {Button} from "@/components/ui/button";
 import {auth} from "@clerk/nextjs/server";
 
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import {Check, CheckCheckIcon, CrossIcon, XIcon} from "lucide-react";
+import {Check, CheckCheckIcon, CrossIcon, Crown, PackageIcon, XIcon} from "lucide-react";
 import {SignedIn} from "@clerk/nextjs";
 import {Checkout} from "@/components/shared/Checkout";
+
+const plans = [
+    {
+        _id: 1,
+        name: "Free",
+        icon: PackageIcon,
+        price: 0,
+        credits: 20,
+        inclusions: [
+            {
+                label: "20 Free Credits",
+                isIncluded: true,
+            },
+            {
+                label: "Basic Access to Services",
+                isIncluded: true,
+            },
+            {
+                label: "Priority Customer Support",
+                isIncluded: false,
+            },
+            {
+                label: "Priority Updates",
+                isIncluded: false,
+            },
+        ],
+    },
+    {
+        _id: 2,
+        name: "Pro Package",
+        icon: PackageIcon,
+        price: 40,
+        credits: 120,
+        inclusions: [
+            {
+                label: "120 Credits",
+                isIncluded: true,
+            },
+            {
+                label: "Full Access to Services",
+                isIncluded: true,
+            },
+            {
+                label: "Priority Customer Support",
+                isIncluded: true,
+            },
+            {
+                label: "Priority Updates",
+                isIncluded: false,
+            },
+        ],
+    },
+    {
+        _id: 3,
+        name: "Premium Package",
+        icon: Crown,
+        price: 199,
+        credits: 2000,
+        inclusions: [
+            {
+                label: "2000 Credits",
+                isIncluded: true,
+            },
+            {
+                label: "Full Access to Services",
+                isIncluded: true,
+            },
+            {
+                label: "Priority Customer Support",
+                isIncluded: true,
+            },
+            {
+                label: "Priority Updates",
+                isIncluded: true,
+            },
+        ],
+    },
+];
 
 export default async function CreditsPage() {
     const {userId} = auth();

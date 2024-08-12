@@ -11,9 +11,52 @@ import {
     SheetTrigger
 } from "@/components/ui/sheet";
 import {Button} from "@/components/ui/button";
-import {MenuIcon} from "lucide-react";
-import {navLinks} from "@/constants";
+import {Camera, Filter, Home, ImageIcon, MenuIcon, Scan, ShoppingBag, Stars, User} from "lucide-react";
 import {usePathname} from "next/navigation";
+
+const navLinks = [
+    {
+        label: "Home",
+        route: "/",
+        icon: Home,
+    },
+    {
+        label: "Image Restore",
+        route: "/transformations/add/restore",
+        icon: ImageIcon,
+    },
+    {
+        label: "Generative Fill",
+        route: "/transformations/add/fill",
+        icon: Stars,
+    },
+    {
+        label: "Object Remove",
+        route: "/transformations/add/remove",
+        icon: Scan,
+    },
+    {
+        label: "Object Recolor",
+        route: "/transformations/add/recolor",
+        icon: Filter,
+    },
+    {
+        label: "Background Remove",
+        route: "/transformations/add/removeBackground",
+        icon: Camera,
+    },
+    {
+        label: "Profile",
+        route: "/profile",
+        icon: User,
+    },
+    {
+        label: "Buy Credits",
+        route: "/credits",
+        icon: ShoppingBag,
+    },
+];
+
 
 export const MobileNav = () => {
     const pathname = usePathname()

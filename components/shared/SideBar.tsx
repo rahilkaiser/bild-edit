@@ -1,10 +1,54 @@
 "use client"
 import Link from "next/link";
 import {SignedIn, SignedOut, UserButton} from "@clerk/nextjs";
-import {navLinks} from "@/constants";
 import {usePathname} from "next/navigation";
 import {Button} from "@/components/ui/button";
 import {dark} from "@clerk/themes";
+import {Camera, Filter, Home, ImageIcon, Scan, ShoppingBag, Stars, User} from "lucide-react";
+
+
+const navLinks = [
+    {
+        label: "Home",
+        route: "/",
+        icon: Home,
+    },
+    {
+        label: "Image Restore",
+        route: "/transformations/add/restore",
+        icon: ImageIcon,
+    },
+    {
+        label: "Generative Fill",
+        route: "/transformations/add/fill",
+        icon: Stars,
+    },
+    {
+        label: "Object Remove",
+        route: "/transformations/add/remove",
+        icon: Scan,
+    },
+    {
+        label: "Object Recolor",
+        route: "/transformations/add/recolor",
+        icon: Filter,
+    },
+    {
+        label: "Background Remove",
+        route: "/transformations/add/removeBackground",
+        icon: Camera,
+    },
+    {
+        label: "Profile",
+        route: "/profile",
+        icon: User,
+    },
+    {
+        label: "Buy Credits",
+        route: "/credits",
+        icon: ShoppingBag,
+    },
+];
 
 
 export const SideBar = () => {
