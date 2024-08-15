@@ -75,7 +75,7 @@ export const MobileNav = () => {
                 }}/></SignedIn>
                 <div className="flex ">
                     <div className="text-3xl font-bold text-white ">
-                        <Link href={"/"}><h3>Bilder<span className="text-accent uppercase">Edit</span></h3>
+                        <Link href={"/"}><h3>Quick<span className="text-accent uppercase">Edit</span></h3>
                         </Link>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ export const MobileNav = () => {
                                 <SheetTitle>
                                     <div className="flex justify-center items-center gap-4">
                                         <div className="text-3xl font-bold text-white ">
-                                            <Link href={"/"}><h3>Bilder<span
+                                            <Link href={"/"}><h3>Quick<span
                                                 className="text-accent uppercase">Edit</span></h3>
                                             </Link>
                                         </div>
