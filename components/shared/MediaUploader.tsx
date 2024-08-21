@@ -61,7 +61,7 @@ export const MediaUploader = (
 
     return (
         <CldUploadWidget
-            uploadPreset={"zerb_aiimageedit"}
+            uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME}
             options={{
                 multiple: false,
                 resourceType: "image",

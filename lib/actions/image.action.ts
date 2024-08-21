@@ -100,7 +100,7 @@ export async function getAllImages(
             secure: true,
         })
 
-        let expression = 'folder=aiimageedit';
+        let expression = 'folder=' + process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME;
 
         if (searchQuery) {
             expression += ` AND ${searchQuery}`
